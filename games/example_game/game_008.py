@@ -17,9 +17,6 @@ score = 0
 def update():
   global score
 
-  if keyboard.escape:
-    exit()
-    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

@@ -10,8 +10,6 @@ ship.x = 370
 ship.y = 550
 
 gem = Actor('gemgreen')
-gem_images = ['gemblue', 'gemgreen', 'gemred', 'gemyellow']
-gem.images = gem_images
 gem.x = random.randint(20, 780)
 gem.y = 0
 
@@ -33,7 +31,6 @@ def update():
   if gem.y > 600:
     game_over = True
   if gem.colliderect(ship):
-    gem.image = random.choice(gem_images)
     gem.x = random.randint(20, 780)
     gem.y = 0
     score = score + 1

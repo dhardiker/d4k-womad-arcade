@@ -18,9 +18,6 @@ game_over = False
 def update():
   global score, game_over
 
-  if keyboard.escape:
-    exit()
-    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

@@ -8,9 +8,6 @@ ship.x = 370
 ship.y = 550
 
 def update():
-  if keyboard.escape:
-    exit()
-    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

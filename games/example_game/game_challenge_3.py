@@ -1,8 +1,6 @@
 import pgzrun
 import random
-
-# print("Enter your spaceship image file:   (must exist in the images folder)")
-# x = input()
+import sys
 
 WIDTH = 800
 HEIGHT = 600
