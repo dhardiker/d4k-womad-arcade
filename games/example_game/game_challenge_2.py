@@ -22,6 +22,7 @@ def update():
 
   if keyboard.escape:
     exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

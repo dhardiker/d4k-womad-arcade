@@ -1,6 +1,7 @@
 # @name Name of my Amazing Example Game
 # @author Jane & John Smith
 import pgzrun
+import sys
 import random
 
 WIDTH = 800
@@ -22,6 +23,7 @@ def update():
 
   if keyboard.escape:
     exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

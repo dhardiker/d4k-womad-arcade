@@ -29,6 +29,7 @@ def update():
 
   if keyboard.escape:
     exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 10   # Speed up the ship because we have multiple gems
   if keyboard.right:

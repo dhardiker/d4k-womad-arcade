@@ -10,6 +10,7 @@ ship.y = 550
 def update():
   if keyboard.escape:
     exit()
+    sys.exit()
 
 def draw():
   ship.draw()
