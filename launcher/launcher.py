@@ -28,6 +28,19 @@ def parse_game_metadata(game_file):
         pass
     return name, author
 
+def check_escape_handling(game_file):
+    try:
+        with open(game_file, 'r') as f:
+            lines = f.readlines()
+            for i in range(len(lines) - 2):
+                if ("if keyboard.escape:" in lines[i] and
+                    "exit()" in lines[i + 1] and
+                    "sys.exit()" in lines[i + 2]):
+                    return True
+    except Exception as e:
+        pass
+    return False
+
 def launch_game(game_script):
     try:
         # Launch the game script in a separate process
@@ -80,11 +93,19 @@ def main(stdscr, games):
                 visible_start += 1
         elif key == ord(' '):
             game_script = games[current_row][0]
-            stdscr.clear()
-            stdscr.refresh()
-            curses.endwin()
-            launch_game(game_script)
-            curses.wrapper(main, games)
+            if check_escape_handling(game_script):
+                stdscr.clear()
+                stdscr.refresh()
+                curses.endwin()
+                launch_game(game_script)
+                curses.wrapper(main, games)
+            else:
+                stdscr.clear()
+                stdscr.addstr(0, 0, "Game is broken. Please ask for help.", curses.color_pair(1))
+                stdscr.refresh()
+                stdscr.getch()  # Wait for a key press to go back to the main menu
+        elif key == 27:  # Escape key
+            break
 
 if __name__ == "__main__":
     game_path = os.getenv("GAME_PATH")
