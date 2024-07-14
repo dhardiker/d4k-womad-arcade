@@ -18,6 +18,8 @@ lives = 3
 def update():
   global score, lives
 
+  if keyboard.escape:
+    exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

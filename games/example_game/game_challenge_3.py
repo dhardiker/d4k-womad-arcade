@@ -23,6 +23,8 @@ game_over = False
 def update():
   global score, game_over, ship_image_selected
 
+  if keyboard.escape:
+    exit()
   if keyboard.up:
     current_ship_image_index = ship_images.index(ship.image)
     previous_ship_image_index = current_ship_image_index - 1 if current_ship_image_index > 0 else len(ship_images) - 1
