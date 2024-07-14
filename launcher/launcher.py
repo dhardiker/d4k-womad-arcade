@@ -2,6 +2,8 @@ import curses
 import subprocess
 import os
 
+keep_running = True
+
 def get_game_files(game_path):
     # Search for files named "game.py" in the specified game path
     game_files = []
@@ -50,7 +52,18 @@ def launch_game(game_script):
     except Exception as e:
         pass
 
-def main(stdscr, games):
+def update_games_list(game_path):
+    return [(game_file, f"{parse_game_metadata(game_file)[0]} by {parse_game_metadata(game_file)[1]} ({os.path.basename(os.path.dirname(game_file))})") for game_file in get_game_files(game_path)]
+
+def git_pull(game_dir):
+    try:
+        subprocess.run(["git", "-C", game_dir, "pull"], check=True)
+    except subprocess.CalledProcessError as e:
+        pass
+
+def main(stdscr, games, game_path):
+    global keep_running
+
     curses.curs_set(0)  # Hide the cursor
     curses.start_color()
     curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
@@ -98,28 +111,33 @@ def main(stdscr, games):
                 stdscr.refresh()
                 curses.endwin()
                 launch_game(game_script)
-                curses.wrapper(main, games)
             else:
                 stdscr.clear()
                 stdscr.addstr(0, 0, "Game is broken. Please ask for help.", curses.color_pair(1))
                 stdscr.refresh()
                 stdscr.getch()  # Wait for a key press to go back to the main menu
+        elif key == ord('g'):
+            stdscr.clear()
+            stdscr.addstr(0, 0, "Refreshing games. Please wait.", curses.color_pair(1))
+            stdscr.refresh()
+            game_dir = os.path.dirname(games[current_row][0])
+            git_pull(game_dir)
+            # Restart!
+            keep_running = True
+            break
         elif key == 27:  # Escape key
+            keep_running = False
             break
 
 if __name__ == "__main__":
     game_path = os.getenv("GAME_PATH")
     if game_path:
-        games = get_game_files(game_path)
-        if games:
-            game_display_data = []
-            for game_file in games:
-                name, author = parse_game_metadata(game_file)
-                dir_name = os.path.basename(os.path.dirname(game_file))
-                display_name = f"{name} by {author} ({dir_name})"
-                game_display_data.append((game_file, display_name))
-            curses.wrapper(main, game_display_data)
-        else:
-            print("No games found in the specified GAME_PATH.")
+        while keep_running:
+            games = update_games_list(game_path)
+            if games:
+                curses.wrapper(main, games, game_path)
+            else:
+                keep_running = False
+                print("No games found in the specified GAME_PATH.")
     else:
         print("The environment variable GAME_PATH is not set.")
