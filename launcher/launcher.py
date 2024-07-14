@@ -104,7 +104,7 @@ def main(stdscr, games, game_path):
                 visible_start = 0
             elif current_row >= visible_start + max_visible // 2 and visible_start + max_visible < len(games):
                 visible_start += 1
-        elif key == ord(' '):
+        elif key == ord('q') or key == ord('a'):
             game_script = games[current_row][0]
             if check_escape_handling(game_script):
                 stdscr.clear()
@@ -116,7 +116,7 @@ def main(stdscr, games, game_path):
                 stdscr.addstr(0, 0, "Game is broken. Please ask for help.", curses.color_pair(1))
                 stdscr.refresh()
                 stdscr.getch()  # Wait for a key press to go back to the main menu
-        elif key == ord('g'):
+        elif key == ord('4'):
             stdscr.clear()
             stdscr.addstr(0, 0, "Refreshing games. Please wait.", curses.color_pair(1))
             stdscr.refresh()
