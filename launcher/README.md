@@ -55,7 +55,7 @@ If the `@name` or `@author` tags are not found, "unknown" is used as the default
 
    - Use the up and down arrow keys to navigate through the list of games.
    - The currently selected game will be highlighted.
-   - Press the space key to launch the selected game.
+   - Press the select button ('a' on the keyboard) to launch the selected game.
    - Once you exit the game, the launcher will reappear.
 
 ## Example Directory Structure

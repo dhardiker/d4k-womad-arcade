@@ -32,7 +32,8 @@ def update():
     current_ship_image_index = ship_images.index(ship.image)
     next_ship_image_index = current_ship_image_index + 1 if current_ship_image_index < len(ship_images) - 1 else 0
     ship.image = ship_images[next_ship_image_index]
-  if keyboard.space:
+  # The button labelled 'select' on the arcade machine is mapped to 'a' on our keyboard
+  if keyboard.a:
     ship_image_selected = True
     gem.y = 0
     score = 0
@@ -55,7 +56,7 @@ def draw():
   screen.fill((80,0,70))
   if not ship_image_selected:
     screen.draw.text('Select your spaceship image', centerx=WIDTH/2, top=200, color=(255,255,255), fontsize=50)
-    screen.draw.text('<up & down to change / space to select>', centerx=WIDTH/2, top=250, color=(255,255,255), fontsize=30)
+    screen.draw.text('<up & down to change / select to choose>', centerx=WIDTH/2, top=250, color=(255,255,255), fontsize=30)
     ship.draw()
   elif game_over:
     screen.draw.text('Game Over', centerx=WIDTH/2, top=200, color=(255,255,255), fontsize=150)
