@@ -83,6 +83,23 @@ import pgzrun
 pgzrun.go()
 ```
 
+## Auto Start on Raspberry Pi OS
+
+Use `raspi-config` to automatically login to the console, and then add the following to the `.bashrc`.
+
+**Note: you probably want to change `/home/dhardiker/...` to the correct path**
+
+```sh
+# Add this script to your /home/dhardiker/.bashrc
+# Start the D4K WOMAD Arcade Game Launcher
+if [[ "$XDG_VTNR" == "1" && -z "$SSH_CONNECTION" ]]; then
+    GAME_PATH=/home/dhardiker/d4k-womad-arcade/games python /home/dhardiker/d4k-womad-arcade/launcher/launcher.py
+fi
+```
+
+The script should only run on TTY1 (the auto logged in TTY) and not any others you can get to with `Ctrl + Alt + F2` etc.
+The script should not run over SSH connections.
+
 ## Notes
 
 - The script assumes each game is in its own directory and the main game script is named `game.py`.
