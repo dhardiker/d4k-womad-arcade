@@ -1,6 +1,7 @@
 # d4k-womad-arcade
 Devoxx4Kids Arcade Workshop for WOMAD 2024
 
+**If you would like help, please open up a GitHub Issue, or email [uk@devoxx4kids.org] and we'll try to point you in the right direction.**
 
 1. Install `Python 3.8` (not the latest)
   * See `Installing Python` below
