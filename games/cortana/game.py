@@ -1,12 +1,13 @@
 # @name Name of my Amazing Example Game
 # @author Jane & John Smith
 import pgzrun
+import sys
 import random
 
 WIDTH = 800
 HEIGHT = 600
 
-ship = Actor('playership1_blue')
+ship = Actor('playership1_red')
 ship.x = 370
 ship.y = 550
 
@@ -20,6 +21,9 @@ game_over = False
 def update():
   global score, game_over
 
+  if keyboard.escape:
+    exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

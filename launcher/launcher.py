@@ -125,9 +125,9 @@ def main(stdscr, games, game_path):
             # Restart!
             keep_running = True
             break
-        elif key == 27:  # Escape key
-            keep_running = False
-            break
+        # elif key == 27:  # Escape key
+        #     keep_running = False
+        #     break
 
 if __name__ == "__main__":
     game_path = os.getenv("GAME_PATH")

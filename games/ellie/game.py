@@ -1,7 +1,6 @@
-# @name Name of my Amazing Example Game
-# @author Jane & John Smith
 import pgzrun
 import random
+import sys
 
 WIDTH = 800
 HEIGHT = 600
@@ -20,6 +19,9 @@ game_over = False
 def update():
   global score, game_over
 
+  if keyboard.escape:
+    exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:

@@ -1,7 +1,12 @@
 # @name Name of my Amazing Example Game
 # @author Jane & John Smith
 import pgzrun
+import sys
 import random
+from pgzero.builtins import Actor, keyboard
+import pgzero.screen
+screen : pgzero.screen.Screen
+
 
 WIDTH = 800
 HEIGHT = 600
@@ -20,6 +25,9 @@ game_over = False
 def update():
   global score, game_over
 
+  if keyboard.escape:
+    exit()
+    sys.exit()
   if keyboard.left:
     ship.x = ship.x - 5
   if keyboard.right:
