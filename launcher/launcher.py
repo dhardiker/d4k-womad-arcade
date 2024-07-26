@@ -86,6 +86,13 @@ def main(stdscr, games, game_path):
                 stdscr.attroff(curses.color_pair(1))
             else:
                 stdscr.addstr(y, x, game_display_name)
+
+        # Display scrolling messages
+        if visible_start > 0:
+            stdscr.addstr(4, w // 2 - len('... scroll up for more ...') // 2, '... scroll up for more ...', curses.color_pair(1))
+        if visible_end < len(games):
+            stdscr.addstr(h - 4, w // 2 - len('... scroll down for more ...') // 2, '... scroll down for more ...', curses.color_pair(1))
+
         stdscr.refresh()
 
         key = stdscr.getch()
