@@ -10,8 +10,6 @@ You can find the [presentation slides use here](https://docs.google.com/presenta
 2. Install `Pygame Zero`
   * `pip install pgzero`
 
-Slides are here: https://docs.google.com/presentation/d/1EHGkN8ul7OWdhdEO8XYA_rpwDMqGccS7/edit?usp=sharing&ouid=113316425877426317108&rtpof=true&sd=true
-
 ### Installing Python
 
 There are many ways to install Python 3.8.
