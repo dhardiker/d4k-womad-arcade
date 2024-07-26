@@ -1,3 +1,5 @@
+# @name Name of my Amazing Example Game
+# @author Jane & John Smith
 import pgzrun
 import random
 
