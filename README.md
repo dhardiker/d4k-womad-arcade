@@ -15,6 +15,10 @@ You can find the [presentation slides use here](https://docs.google.com/presenta
 There are many ways to install Python 3.8.
 You can check which version of Python you have with `python --version`.
 
+#### Cross Platform Installation
+
+Visit https://www.python.org/downloads/release/python-380/ for instructions (files are at the bottom).
+
 #### Mac using Homebrew
 
 ```zsh
