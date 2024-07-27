@@ -1,3 +1,5 @@
+# @name Amazing Example Game with Scores
+# @author Orlando
 import pgzrun
 import sys
 import random
