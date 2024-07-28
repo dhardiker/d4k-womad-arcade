@@ -3,7 +3,7 @@ import pgzrun
 WIDTH = 800
 HEIGHT = 600
 
-ship = Actor('playership1_blue')
+ship = Actor('playership3_green')
 ship.x = 370
 ship.y = 550
 

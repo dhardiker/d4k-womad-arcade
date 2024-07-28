@@ -3,7 +3,7 @@ import pgzrun
 WIDTH = 800
 HEIGHT = 600
 
-ship = Actor('playership1_blue')
+ship = Actor('playership3_green')
 ship.x = 370
 ship.y = 550
 
@@ -21,5 +21,9 @@ def draw():
   screen.fill((80,0,70))
   gem.draw()
   ship.draw()
+
+  gem.y = gem.y +n4
+  if gem.y > 600:
+    gem.y = 0
 
 pgzrun.go() # Must be last line
